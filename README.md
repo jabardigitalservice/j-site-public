@@ -1,75 +1,74 @@
-# Nuxt 3 Minimal Starter
+## J-Site Public
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is the main codebase for J-Site Public application.
 
-## Setup
+## Docs
 
-Make sure to install the dependencies:
+- [J-Site Public](#j-site-public)
+- [Docs](#docs)
+- [Codebase](#codebase)
+  - [Technologies](#technologies)
+  - [Folder Structure](#folder-structure)
+- [First time setup](#first-time-setup)
+- [Running locally](#running-locally)
+
+## Codebase
+
+### Technologies
+
+Here is a list of all the core technologies this project use:
+
+- Node Version: v18.18.0 LTS
+- [Nuxt 3](https://nuxt.com/): Vue.js framework for server-side rendering
+- [pnpm](https://pnpm.io/): Package manager
+- [Tailwind CSS](https://tailwindcss.com/): CSS framework for styling
+
+### Folder Structure
 
 ```bash
-# npm
-npm install
+j-site/
+├── assets        # Uncompiled assets such as Stylus or Sass files, images, or fonts
+├── components    # Vue.js components
+├── layouts       # Custom layout accessible with the layout property in the page component
+├── pages         # Application views and routes
+├── plugins       # Add Vue plugins and inject functions or constants
+├── static        # Static files
+└── utils         # Reusable utility codes or functions
+```
 
-# pnpm
+## First time setup
+
+The first step to running J-Site locally is downloading the code by cloning the repository:
+
+```bash
+git clone https://github.com/jabardigitalservice/j-site-builder.git
+
+#or using SSH
+git clone git@github.com:jabardigitalservice/j-site-builder.git
+```
+
+open `j-site-builder` directory
+
+```bash
+cd j-site-builder
+```
+
+create env file
+
+```bash
+cp .env.example .env
+```
+
+install the dependencies
+
+```bash
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Running locally
 
-Start the development server on `http://localhost:3000`:
+Compiles and hot-reloads for development
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
