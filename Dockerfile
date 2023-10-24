@@ -1,28 +1,22 @@
-FROM node:18.18.2-alpine3.18 AS base
+FROM node:18.18.0-alpine3.17 AS base
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 
 WORKDIR /app
-COPY package*.json ./
-COPY pnpm-lock.yaml ./
-
-FROM base AS prod-deps
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+COPY . .
 
 FROM base AS build
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
-COPY . .
+RUN pnpm run build
 
-# Add ENV and ARGS here
-
-ENV NODE_ENV=production
+FROM base
+COPY --from=build /app/.output /app/.output
+# Add ARGS and ENV here
+# ...
 ENV HOST 0.0.0.0
 ENV PORT 3000
 
-RUN pnpm run build
-
 EXPOSE 3000
-
-CMD [ "pnpm", "start" ]
+CMD [ "pnpm", "run", "start" ]
