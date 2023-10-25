@@ -35,9 +35,7 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ secrets.SERVICE_IMAGENAME_STAGING }}:${{ env.sha_short }}
-          build-args: |
-            APP_ENVIRONMENT=development
-            NUXT_ENV_PUBLIC_URL=${{ secrets.NUXT_ENV_PUBLIC_URL_STAGING }}
+          
       # GitOps
       - name: GitOps ArgoCD Setup
         run: |
